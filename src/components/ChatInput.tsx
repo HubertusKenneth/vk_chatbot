@@ -56,7 +56,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask me anything about Vyone and Hubertus love story..."
+              placeholder="Ask anything"
               disabled={disabled}
               className={`w-full p-3 sm:p-4 rounded-3xl resize-none outline-none transition-colors min-h-[48px] sm:min-h-[56px] max-h-[120px] text-sm sm:text-base ${
                 theme === 'dark'
