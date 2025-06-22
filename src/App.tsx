@@ -112,34 +112,38 @@ function App() {
               : 'bg-white/80 border-gray-200/50'
           }`}
         >
-          <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="w-full px-4 py-4">
             <div className="flex items-center justify-between">
-              <button
-                onClick={() => setSidebarOpen(true)}
-                className={`p-2 rounded-lg transition-colors ${
-                  theme === 'dark'
-                    ? 'hover:bg-slate-800 text-slate-300 hover:text-slate-200'
-                    : 'hover:bg-gray-100 text-gray-600 hover:text-gray-700'
-                }`}
-              >
-                <Menu size={24} />
-              </button>
+              {/* Left side - Menu button */}
+              <div className="flex items-center">
+                <button
+                  onClick={() => setSidebarOpen(true)}
+                  className={`p-2 rounded-lg transition-colors ${
+                    theme === 'dark'
+                      ? 'hover:bg-slate-800 text-slate-300 hover:text-slate-200'
+                      : 'hover:bg-gray-100 text-gray-600 hover:text-gray-700'
+                  }`}
+                >
+                  <Menu size={24} />
+                </button>
+              </div>
 
+              {/* Center - Logo and Title */}
               <div className="flex items-center gap-4">
-                <div className={`p-4 rounded-full ${
+                <div className={`p-3 sm:p-4 rounded-full ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-pink-500 to-rose-500'
                     : 'bg-gradient-to-br from-purple-500 to-pink-500'
                 }`}>
-                  <Heart size={28} className="text-white" />
+                  <Heart size={20} className="text-white sm:w-7 sm:h-7" />
                 </div>
                 <div className="text-center">
-                  <h1 className={`text-2xl font-bold ${
+                  <h1 className={`text-lg sm:text-2xl font-bold ${
                     theme === 'dark' ? 'text-slate-100' : 'text-gray-800'
                   }`}>
                     VK Relationship Assistant
                   </h1>
-                  <p className={`text-sm ${
+                  <p className={`text-xs sm:text-sm ${
                     theme === 'dark' ? 'text-slate-400' : 'text-gray-600'
                   }`}>
                     Storytelling Helper
@@ -147,15 +151,16 @@ function App() {
                 </div>
               </div>
 
+              {/* Right side - Status */}
               <div className="flex items-center gap-2">
-                <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                <div className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
                   theme === 'dark'
                     ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                     : 'bg-green-100 text-green-700 border border-green-200'
                 }`}>
                   <div className="flex items-center gap-1">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    Online
+                    <span className="hidden sm:inline">Online</span>
                   </div>
                 </div>
               </div>
@@ -165,113 +170,115 @@ function App() {
 
         {/* Main Content */}
         <div className="flex-1 overflow-hidden">
-          <div className="h-full max-w-6xl mx-auto flex flex-col">
+          <div className="h-full w-full flex flex-col">
             {/* Messages Area */}
             <div className="flex-1 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-slate-600 scrollbar-track-transparent">
-              <AnimatePresence mode="wait">
-                {showWelcome && messages.length === 0 ? (
-                  <motion.div
-                    key="welcome"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="h-full flex flex-col justify-center"
-                  >
-                    <div className="text-center mb-8">
-                      <motion.div
-                        animate={{ 
-                          rotate: [0, 5, -5, 0],
-                          scale: [1, 1.05, 1]
-                        }}
-                        transition={{ 
-                          duration: 3,
-                          repeat: Infinity,
-                          repeatType: "reverse"
-                        }}
-                        className={`inline-flex p-8 rounded-full mb-8 ${
-                          theme === 'dark'
-                            ? 'bg-gradient-to-br from-pink-500/20 to-rose-500/20 border border-pink-500/30'
-                            : 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20'
-                        }`}
-                      >
-                        <Sparkles size={56} className={
-                          theme === 'dark' ? 'text-pink-400' : 'text-purple-600'
-                        } />
-                      </motion.div>
-                      
-                      <h2 className={`text-4xl font-bold mb-6 ${
-                        theme === 'dark' ? 'text-slate-100' : 'text-gray-800'
-                      }`}>
-                        Welcome to VK Relationship Assistant!
-                      </h2>
-                      
-                      <p className={`text-xl mb-8 max-w-2xl mx-auto leading-relaxed ${
-                        theme === 'dark' ? 'text-slate-300' : 'text-gray-600'
-                      }`}>
-                        I am a virtual assistant who is ready to help you with various questions about relationships and storytelling about V and K's relationship. 
-                        Ask anything you want to know! ✨
-                      </p>
+              <div className="max-w-4xl mx-auto">
+                <AnimatePresence mode="wait">
+                  {showWelcome && messages.length === 0 ? (
+                    <motion.div
+                      key="welcome"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      className="h-full flex flex-col justify-center"
+                    >
+                      <div className="text-center mb-8">
+                        <motion.div
+                          animate={{ 
+                            rotate: [0, 5, -5, 0],
+                            scale: [1, 1.05, 1]
+                          }}
+                          transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            repeatType: "reverse"
+                          }}
+                          className={`inline-flex p-6 sm:p-8 rounded-full mb-6 sm:mb-8 ${
+                            theme === 'dark'
+                              ? 'bg-gradient-to-br from-pink-500/20 to-rose-500/20 border border-pink-500/30'
+                              : 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20'
+                          }`}
+                        >
+                          <Sparkles size={40} className={`sm:w-14 sm:h-14 ${
+                            theme === 'dark' ? 'text-pink-400' : 'text-purple-600'
+                          }`} />
+                        </motion.div>
+                        
+                        <h2 className={`text-2xl sm:text-4xl font-bold mb-4 sm:mb-6 ${
+                          theme === 'dark' ? 'text-slate-100' : 'text-gray-800'
+                        }`}>
+                          Welcome to VK Relationship Assistant!
+                        </h2>
+                        
+                        <p className={`text-base sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4 ${
+                          theme === 'dark' ? 'text-slate-300' : 'text-gray-600'
+                        }`}>
+                          I am a virtual assistant who is ready to help you with various questions about relationships and storytelling about V and K's relationship. 
+                          Ask anything you want to know! ✨
+                        </p>
 
-                      <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10 text-sm ${
-                        theme === 'dark' ? 'text-slate-400' : 'text-gray-600'
-                      }`}>
-                        <motion.div 
-                          whileHover={{ scale: 1.02, y: -2 }}
-                          className={`p-6 rounded-xl backdrop-blur-sm ${
-                            theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
-                          }`}
-                        >
-                          <div className="text-3xl mb-3">💕</div>
-                          <div className="font-semibold mb-2 text-lg">Their Love Story</div>
-                          <div>Discover how two hearts became one</div>
-                        </motion.div>
-                        <motion.div 
-                          whileHover={{ scale: 1.02, y: -2 }}
-                          className={`p-6 rounded-xl backdrop-blur-sm ${
-                            theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
-                          }`}
-                        >
-                          <div className="text-3xl mb-3">✨</div>
-                          <div className="font-semibold mb-2 text-lg">Special Moments</div>
-                          <div>Learn about their most precious memories</div>
-                        </motion.div>
-                        <motion.div 
-                          whileHover={{ scale: 1.02, y: -2 }}
-                          className={`p-6 rounded-xl backdrop-blur-sm ${
-                            theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
-                          }`}
-                        >
-                          <div className="text-3xl mb-3">🔮</div>
-                          <div className="font-semibold mb-2 text-lg">Future Dreams</div>
-                          <div>Explore their plans and aspirations together</div>
-                        </motion.div>
+                        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto mb-8 sm:mb-10 text-sm px-4 ${
+                          theme === 'dark' ? 'text-slate-400' : 'text-gray-600'
+                        }`}>
+                          <motion.div 
+                            whileHover={{ scale: 1.02, y: -2 }}
+                            className={`p-4 sm:p-6 rounded-xl backdrop-blur-sm ${
+                              theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
+                            }`}
+                          >
+                            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">💕</div>
+                            <div className="font-semibold mb-1 sm:mb-2 text-base sm:text-lg">Their Love Story</div>
+                            <div className="text-sm">Discover how two hearts became one</div>
+                          </motion.div>
+                          <motion.div 
+                            whileHover={{ scale: 1.02, y: -2 }}
+                            className={`p-4 sm:p-6 rounded-xl backdrop-blur-sm ${
+                              theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
+                            }`}
+                          >
+                            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">✨</div>
+                            <div className="font-semibold mb-1 sm:mb-2 text-base sm:text-lg">Special Moments</div>
+                            <div className="text-sm">Learn about their most precious memories</div>
+                          </motion.div>
+                          <motion.div 
+                            whileHover={{ scale: 1.02, y: -2 }}
+                            className={`p-4 sm:p-6 rounded-xl backdrop-blur-sm sm:col-span-2 lg:col-span-1 ${
+                              theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
+                            }`}
+                          >
+                            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">🔮</div>
+                            <div className="font-semibold mb-1 sm:mb-2 text-base sm:text-lg">Future Dreams</div>
+                            <div className="text-sm">Explore their plans and aspirations together</div>
+                          </motion.div>
+                        </div>
                       </div>
-                    </div>
 
-                    <QuickActions 
-                      onActionClick={handleSendMessage}
-                      theme={theme}
-                    />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="messages"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="space-y-1"
-                  >
-                    {messages.map((message) => (
-                      <ChatMessage
-                        key={message.id}
-                        message={message}
+                      <QuickActions 
+                        onActionClick={handleSendMessage}
                         theme={theme}
-                        onCopy={handleCopyMessage}
                       />
-                    ))}
-                    <div ref={messagesEndRef} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="messages"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="space-y-1"
+                    >
+                      {messages.map((message) => (
+                        <ChatMessage
+                          key={message.id}
+                          message={message}
+                          theme={theme}
+                          onCopy={handleCopyMessage}
+                        />
+                      ))}
+                      <div ref={messagesEndRef} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
 
             {/* Input Area */}

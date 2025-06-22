@@ -165,35 +165,77 @@ export const useChat = () => {
     addMessage(content, true);
 
     try {
-      // Simulate API call to get response about Vyone & Hubertus
-      const response = await simulateAPICall(content);
+      // Get response based on message content
+      const response = await getSmartResponse(content);
       await simulateTyping(response);
     } catch (error) {
       console.error('Failed to get response:', error);
-      await simulateTyping('Sorry, I encountered an error while processing your question. Please try again.');
+      await simulateTyping('Maaf, saya mengalami kesalahan saat memproses pertanyaan Anda. Silakan coba lagi.');
     }
   }, [currentConversationId, createNewConversation, addMessage, simulateTyping]);
 
-  // Simulate API call with responses about Vyone & Hubertus relationship
-  const simulateAPICall = async (message: string): Promise<string> => {
-    // This would normally call your PHP backend with Gemini API
-    // For demo purposes, we'll simulate responses about their relationship
-    const responses = [
-      "Vyone and Hubertus have such a beautiful love story! They first met through mutual friends at a coffee shop in downtown. It was love at first sight - Hubertus was immediately drawn to Vyone's warm smile and infectious laughter, while Vyone was captivated by Hubertus's genuine kindness and thoughtful nature. Would you like to know more about their first conversation?",
-      
-      "Their relationship officially began on May 15th, 2025. After weeks of getting to know each other through long conversations and shared interests, Hubertus finally asked Vyone to be his girlfriend during a romantic sunset walk by the lake. Vyone said yes without hesitation! They both knew they had found something special in each other.",
-      
-      "What makes their relationship so special is how they complement each other perfectly. Vyone brings out Hubertus's adventurous side, encouraging him to try new things and step out of his comfort zone. Meanwhile, Hubertus provides the stability and emotional support that Vyone cherishes. They share a love for traveling, cooking together, and deep meaningful conversations that can last for hours.",
-      
-      "One of their most memorable moments was their first trip together to Bali last summer. They spent a week exploring the beautiful beaches, trying local cuisine, and creating memories that would last a lifetime. It was during this trip that they both realized how deeply they had fallen for each other. Hubertus even surprised Vyone with a handwritten letter expressing his feelings, which she still keeps as a treasured keepsake.",
-      
-      "Looking towards the future, Vyone and Hubertus have many exciting plans together. They're currently saving up for their dream home and talking about adopting a rescue dog. They both share the same values about family, career goals, and making a positive impact in their community. Their love continues to grow stronger each day, built on a foundation of trust, respect, and genuine friendship."
-    ];
+  // Smart response system that handles both general and specific questions
+  const getSmartResponse = async (message: string): Promise<string> => {
+    const lowerMessage = message.toLowerCase();
     
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 500));
+    // General greetings and common questions
+    if (lowerMessage.includes('hi') || lowerMessage.includes('hello') || lowerMessage.includes('hai') || lowerMessage.includes('halo')) {
+      return 'Hai! Saya adalah asisten virtual yang siap membantu Anda dengan berbagai pertanyaan tentang kisah cinta Vyone dan Hubertus. Ada yang ingin Anda ketahui tentang mereka? 😊';
+    }
     
-    return responses[Math.floor(Math.random() * responses.length)];
+    if (lowerMessage.includes('how are you') || lowerMessage.includes('apa kabar') || lowerMessage.includes('bagaimana kabar')) {
+      return 'Saya baik-baik saja, terima kasih! Saya selalu siap membantu Anda mengetahui lebih banyak tentang kisah cinta yang indah antara Vyone dan Hubertus. Ada yang ingin Anda tanyakan tentang mereka?';
+    }
+    
+    if (lowerMessage.includes('what can you do') || lowerMessage.includes('apa yang bisa') || lowerMessage.includes('kemampuan')) {
+      return 'Saya bisa membantu Anda dengan berbagai informasi tentang hubungan Vyone dan Hubertus! Saya bisa menceritakan tentang:\n\n• Bagaimana mereka bertemu\n• Kencan pertama mereka\n• Momen-momen spesial\n• Kepribadian mereka\n• Rencana masa depan\n• Dan masih banyak lagi!\n\nSilakan tanyakan apa saja yang ingin Anda ketahui tentang kisah cinta mereka! 💕';
+    }
+    
+    if (lowerMessage.includes('thank') || lowerMessage.includes('terima kasih') || lowerMessage.includes('thanks')) {
+      return 'Sama-sama! Senang bisa membantu Anda mengetahui lebih banyak tentang kisah cinta Vyone dan Hubertus. Jangan ragu untuk bertanya lagi kapan saja! 😊';
+    }
+
+    // Specific relationship questions
+    if (lowerMessage.includes('bertemu') || lowerMessage.includes('meet') || lowerMessage.includes('kenal')) {
+      return 'Vyone dan Hubertus bertemu di Universitas Bina Nusantara saat semester 2. Pada saat kelas mata kuliah Calculus, Hubertus mengajak kenalan Vyone karena Vyone merupakan teman dari temannya Hubertus, yaitu Jeisen. Saat semester 2, mereka memang tidak banyak ngobrol. Dan ketika semester 3, mereka berada di 1 kelas yang sama lagi dan mulai dari tanggal 3 Oktober 2024 mereka chatting setiap hari sampai sekarang! 💕';
+    }
+    
+    if (lowerMessage.includes('first date') || lowerMessage.includes('kencan pertama') || lowerMessage.includes('date pertama')) {
+      return 'Ketika mereka sudah jadian pada tanggal 15 Mei 2025, mereka Date di Mall of Alam Sutera (walaupun hampir setiap hari mereka dating dan main di sana). Tempat yang sangat spesial bagi mereka berdua! 🌹';
+    }
+    
+    if (lowerMessage.includes('started dating') || lowerMessage.includes('mulai jalan') || lowerMessage.includes('jalan berdua')) {
+      return 'Pertama kali mereka pergi jalan berdua adalah pada tanggal 7 Februari 2025, dimana mereka pergi ke Jakarta untuk makan bareng di restoran bernama Nagabi di Citra 8, Jakarta Barat. Momen yang sangat berkesan untuk mereka berdua! 📅';
+    }
+    
+    if (lowerMessage.includes('special moment') || lowerMessage.includes('momen spesial') || lowerMessage.includes('kenangan')) {
+      return 'Mereka memiliki banyak momen spesial! Salah satunya adalah pada tanggal 24 Maret 2025, mereka pergi ke Lippo Mall Puri berdua untuk bermain bareng. Dan ada juga pada tanggal 25 April 2025, mereka pergi bareng ke PIK (Pantai Indah Kapuk) untuk bermain bersama hingga malam hari. Setiap momen bersama adalah spesial bagi mereka! ✨';
+    }
+    
+    if (lowerMessage.includes('personalit') || lowerMessage.includes('kepribadian') || lowerMessage.includes('sifat')) {
+      return 'Hubertus adalah orang yang sangat penyabar, penyayang, dan pengertian terhadap pasangannya (Vyone). Vyone juga merupakan orang yang sangat baik hati dan juga penyayang terhadap pasangannya walaupun sedikit gampang cemburu dan tidak peka. Mereka saling melengkapi dengan sempurna! 🎭';
+    }
+    
+    if (lowerMessage.includes('future') || lowerMessage.includes('masa depan') || lowerMessage.includes('rencana')) {
+      return 'Mereka ingin hubungan mereka berjalan dengan baik dan lancar sampai maut memisahkan. Mereka ingin selalu ada untuk satu sama lain dalam suka maupun duka, agar mereka bisa menjadi pasangan yang saling melengkapi. Mereka juga punya impian untuk menikah di Florida! 🔮💍';
+    }
+    
+    if (lowerMessage.includes('jadian') || lowerMessage.includes('official') || lowerMessage.includes('resmi')) {
+      return 'Mereka resmi menjadi pasangan pada tanggal 15 Mei 2025! Hari yang sangat berkesan dan menjadi awal dari perjalanan cinta mereka yang indah. 💕';
+    }
+
+    // Default response for relationship-related questions
+    if (lowerMessage.includes('vyone') || lowerMessage.includes('hubertus') || lowerMessage.includes('mereka') || lowerMessage.includes('relationship') || lowerMessage.includes('hubungan')) {
+      const responses = [
+        'Vyone dan Hubertus memiliki kisah cinta yang sangat indah! Mereka bertemu di kampus dan sekarang menjalani hubungan yang penuh kasih sayang. Ada aspek khusus dari hubungan mereka yang ingin Anda ketahui lebih lanjut?',
+        'Hubungan Vyone dan Hubertus dibangun atas dasar saling pengertian dan kasih sayang. Mereka selalu mendukung satu sama lain dalam setiap langkah. Apa yang ingin Anda ketahui tentang mereka?',
+        'Kisah cinta Vyone dan Hubertus dimulai dari pertemuan sederhana di kampus dan berkembang menjadi hubungan yang sangat indah. Mereka adalah contoh pasangan yang saling melengkapi. Ada yang spesifik yang ingin Anda tanyakan?'
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
+    }
+    
+    // If the question doesn't match any pattern, provide a helpful response
+    return 'Saya khusus membantu menjawab pertanyaan tentang kisah cinta Vyone dan Hubertus. Anda bisa bertanya tentang bagaimana mereka bertemu, kencan pertama, momen spesial, kepribadian mereka, atau rencana masa depan mereka. Ada yang ingin Anda ketahui tentang kisah cinta mereka? 💕';
   };
 
   return {
