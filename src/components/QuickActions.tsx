@@ -19,8 +19,8 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onActionClick, theme
     <div className="space-y-6">
       {/* Featured Quick Actions */}
       <div>
-        <h3 className={`text-xl font-semibold mb-4 font-serif ${
-          theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+        <h3 className={`text-xl font-semibold mb-4 ${
+          theme === 'dark' ? 'text-slate-200' : 'text-gray-700'
         }`}>
           💕 Ask About Our Love Story
         </h3>
@@ -32,9 +32,9 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onActionClick, theme
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => onActionClick(action.message)}
-              className={`p-4 rounded-xl text-left transition-all duration-300 ${
+              className={`p-4 rounded-xl text-left transition-all duration-300 backdrop-blur-sm ${
                 theme === 'dark'
-                  ? 'bg-gray-800/60 hover:bg-gray-700/60 border border-gray-700/50 hover:border-pink-500/50 text-gray-200 shadow-lg hover:shadow-pink-500/10'
+                  ? 'bg-slate-800/60 hover:bg-slate-700/60 border border-slate-700/50 hover:border-pink-500/50 text-slate-200 shadow-lg hover:shadow-pink-500/10'
                   : 'bg-white/60 hover:bg-white/80 border border-gray-200/50 hover:border-purple-500/50 text-gray-700 shadow-lg hover:shadow-purple-500/10'
               }`}
             >

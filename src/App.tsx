@@ -62,7 +62,7 @@ function App() {
   return (
     <div className={`min-h-screen transition-all duration-500 ${
       theme === 'dark'
-        ? 'bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900'
+        ? 'bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900'
         : 'bg-gradient-to-br from-rose-50 via-purple-50/30 to-pink-50'
     }`}>
       <ParticleBackground theme={theme} />
@@ -108,17 +108,17 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           className={`backdrop-blur-xl border-b transition-all duration-300 ${
             theme === 'dark'
-              ? 'bg-gray-900/70 border-gray-700/50'
-              : 'bg-white/70 border-gray-200/50'
+              ? 'bg-slate-900/80 border-slate-700/50'
+              : 'bg-white/80 border-gray-200/50'
           }`}
         >
-          <div className="max-w-4xl mx-auto px-4 py-4">
+          <div className="max-w-6xl mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               <button
                 onClick={() => setSidebarOpen(true)}
                 className={`p-2 rounded-lg transition-colors ${
                   theme === 'dark'
-                    ? 'hover:bg-gray-800 text-gray-300 hover:text-gray-200'
+                    ? 'hover:bg-slate-800 text-slate-300 hover:text-slate-200'
                     : 'hover:bg-gray-100 text-gray-600 hover:text-gray-700'
                 }`}
               >
@@ -134,13 +134,13 @@ function App() {
                   <Heart size={28} className="text-white" />
                 </div>
                 <div className="text-center">
-                  <h1 className={`text-2xl font-bold font-serif ${
-                    theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+                  <h1 className={`text-2xl font-bold ${
+                    theme === 'dark' ? 'text-slate-100' : 'text-gray-800'
                   }`}>
                     VK Relationship Assistant
                   </h1>
                   <p className={`text-sm ${
-                    theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                    theme === 'dark' ? 'text-slate-400' : 'text-gray-600'
                   }`}>
                     Storytelling Helper
                   </p>
@@ -165,9 +165,9 @@ function App() {
 
         {/* Main Content */}
         <div className="flex-1 overflow-hidden">
-          <div className="h-full max-w-4xl mx-auto flex flex-col">
+          <div className="h-full max-w-6xl mx-auto flex flex-col">
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto px-4 py-6">
+            <div className="flex-1 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-slate-600 scrollbar-track-transparent">
               <AnimatePresence mode="wait">
                 {showWelcome && messages.length === 0 ? (
                   <motion.div
@@ -199,26 +199,26 @@ function App() {
                         } />
                       </motion.div>
                       
-                      <h2 className={`text-4xl font-bold mb-6 font-serif ${
-                        theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
+                      <h2 className={`text-4xl font-bold mb-6 ${
+                        theme === 'dark' ? 'text-slate-100' : 'text-gray-800'
                       }`}>
                         Welcome to VK Relationship Assistant!
                       </h2>
                       
                       <p className={`text-xl mb-8 max-w-2xl mx-auto leading-relaxed ${
-                        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                        theme === 'dark' ? 'text-slate-300' : 'text-gray-600'
                       }`}>
                         I am a virtual assistant who is ready to help you with various questions about relationships and storytelling about V and K's relationship. 
                         Ask anything you want to know! ✨
                       </p>
 
                       <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10 text-sm ${
-                        theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                        theme === 'dark' ? 'text-slate-400' : 'text-gray-600'
                       }`}>
                         <motion.div 
                           whileHover={{ scale: 1.02, y: -2 }}
-                          className={`p-6 rounded-xl ${
-                            theme === 'dark' ? 'bg-gray-800/40 border border-gray-700/30' : 'bg-white/40 border border-gray-200/30'
+                          className={`p-6 rounded-xl backdrop-blur-sm ${
+                            theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
                           }`}
                         >
                           <div className="text-3xl mb-3">💕</div>
@@ -227,8 +227,8 @@ function App() {
                         </motion.div>
                         <motion.div 
                           whileHover={{ scale: 1.02, y: -2 }}
-                          className={`p-6 rounded-xl ${
-                            theme === 'dark' ? 'bg-gray-800/40 border border-gray-700/30' : 'bg-white/40 border border-gray-200/30'
+                          className={`p-6 rounded-xl backdrop-blur-sm ${
+                            theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
                           }`}
                         >
                           <div className="text-3xl mb-3">✨</div>
@@ -237,8 +237,8 @@ function App() {
                         </motion.div>
                         <motion.div 
                           whileHover={{ scale: 1.02, y: -2 }}
-                          className={`p-6 rounded-xl ${
-                            theme === 'dark' ? 'bg-gray-800/40 border border-gray-700/30' : 'bg-white/40 border border-gray-200/30'
+                          className={`p-6 rounded-xl backdrop-blur-sm ${
+                            theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
                           }`}
                         >
                           <div className="text-3xl mb-3">🔮</div>

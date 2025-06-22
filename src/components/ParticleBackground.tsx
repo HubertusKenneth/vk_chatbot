@@ -36,8 +36,8 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ theme })
       const particleCount = Math.floor((canvas.width * canvas.height) / 20000);
       
       const colors = theme === 'dark' 
-        ? ['rgba(255, 182, 193, 0.6)', 'rgba(255, 192, 203, 0.4)', 'rgba(255, 255, 255, 0.3)']
-        : ['rgba(102, 126, 234, 0.4)', 'rgba(118, 75, 162, 0.3)', 'rgba(255, 182, 193, 0.5)'];
+        ? ['rgba(255, 182, 193, 0.6)', 'rgba(255, 192, 203, 0.4)', 'rgba(255, 255, 255, 0.3)', 'rgba(236, 72, 153, 0.4)']
+        : ['rgba(102, 126, 234, 0.4)', 'rgba(118, 75, 162, 0.3)', 'rgba(255, 182, 193, 0.5)', 'rgba(147, 51, 234, 0.3)'];
 
       for (let i = 0; i < particleCount; i++) {
         particles.push({

@@ -41,14 +41,14 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   return (
     <div className={`border-t backdrop-blur-sm ${
       theme === 'dark' 
-        ? 'bg-gray-900/80 border-gray-700/50' 
+        ? 'bg-slate-900/80 border-slate-700/50' 
         : 'bg-white/80 border-gray-200/50'
     }`}>
-      <div className="max-w-4xl mx-auto p-6">
+      <div className="max-w-6xl mx-auto p-6">
         <form onSubmit={handleSubmit} className="flex items-end gap-4">
           <div className={`flex-1 relative rounded-2xl transition-all duration-200 ${
             theme === 'dark'
-              ? 'bg-gray-800/60 border border-gray-700/50 focus-within:border-pink-500/50 focus-within:shadow-lg focus-within:shadow-pink-500/10'
+              ? 'bg-slate-800/60 border border-slate-700/50 focus-within:border-pink-500/50 focus-within:shadow-lg focus-within:shadow-pink-500/10'
               : 'bg-white/60 border border-gray-200/50 focus-within:border-purple-500/50 focus-within:shadow-lg focus-within:shadow-purple-500/10'
           }`}>
             <textarea
@@ -60,7 +60,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               disabled={disabled}
               className={`w-full p-4 rounded-2xl resize-none outline-none transition-colors min-h-[56px] max-h-[120px] ${
                 theme === 'dark'
-                  ? 'bg-transparent text-gray-100 placeholder-gray-400'
+                  ? 'bg-transparent text-slate-100 placeholder-slate-400'
                   : 'bg-transparent text-gray-800 placeholder-gray-500'
               }`}
               rows={1}
@@ -78,7 +78,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                   ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg hover:shadow-pink-500/25'
                   : 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-purple-500/25'
                 : theme === 'dark'
-                  ? 'bg-gray-700/50 text-gray-500 cursor-not-allowed'
+                  ? 'bg-slate-700/50 text-slate-500 cursor-not-allowed'
                   : 'bg-gray-200/50 text-gray-400 cursor-not-allowed'
             }`}
             title="Send message"
