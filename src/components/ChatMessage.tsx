@@ -33,7 +33,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, theme, onCopy
         
         <div className={`flex-1 max-w-3xl p-4 rounded-2xl rounded-tl-sm ${
           theme === 'dark'
-            ? 'bg-slate-800/80 backdrop-blur-sm border border-slate-700/50'
+            ? 'bg-gray-800 backdrop-blur-sm border border-gray-700'
             : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-lg'
         }`}>
           <div className="flex items-center gap-2">
@@ -57,7 +57,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, theme, onCopy
               ))}
             </div>
             <span className={`text-sm ${
-              theme === 'dark' ? 'text-slate-400' : 'text-gray-500'
+              theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
             }`}>
               VK is typing...
             </span>
@@ -99,7 +99,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, theme, onCopy
               }`
             : `rounded-tl-sm ${
                 theme === 'dark'
-                  ? 'bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 text-slate-100'
+                  ? 'bg-gray-800 backdrop-blur-sm border border-gray-700 text-gray-100'
                   : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-lg text-gray-800'
               }`
         }`}>
@@ -111,14 +111,14 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, theme, onCopy
             message.isUser
               ? 'border-white/20'
               : theme === 'dark'
-                ? 'border-slate-700/50'
+                ? 'border-gray-700'
                 : 'border-gray-200/50'
           }`}>
             <span className={`text-xs ${
               message.isUser
                 ? 'text-white/70'
                 : theme === 'dark'
-                  ? 'text-slate-400'
+                  ? 'text-gray-400'
                   : 'text-gray-500'
             }`}>
               {format(message.timestamp, 'HH:mm')}
@@ -129,7 +129,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, theme, onCopy
                 <button
                   onClick={handleCopy}
                   className={`p-1 rounded hover:bg-gray-100/20 transition-colors ${
-                    theme === 'dark' ? 'text-slate-400 hover:text-slate-300' : 'text-gray-500 hover:text-gray-600'
+                    theme === 'dark' ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-600'
                   }`}
                   title="Copy message"
                 >

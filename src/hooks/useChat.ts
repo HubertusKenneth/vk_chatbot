@@ -170,7 +170,7 @@ export const useChat = () => {
       await simulateTyping(response);
     } catch (error) {
       console.error('Failed to get response:', error);
-      await simulateTyping('Maaf, saya mengalami kesalahan saat memproses pertanyaan Anda. Silakan coba lagi.');
+      await simulateTyping('Sorry, I encountered an error while processing your question. Please try again.');
     }
   }, [currentConversationId, createNewConversation, addMessage, simulateTyping]);
 
@@ -180,19 +180,19 @@ export const useChat = () => {
     
     // General greetings and common questions
     if (lowerMessage.includes('hi') || lowerMessage.includes('hello') || lowerMessage.includes('hai') || lowerMessage.includes('halo')) {
-      return 'Hai! Saya adalah asisten virtual yang siap membantu Anda dengan berbagai pertanyaan tentang kisah cinta Vyone dan Hubertus. Ada yang ingin Anda ketahui tentang mereka? 😊';
+      return 'Hi! I am a virtual assistant ready to help you with various questions about relationships and storytelling about V and K\'s relationship. What would you like to know about them? 😊';
     }
     
     if (lowerMessage.includes('how are you') || lowerMessage.includes('apa kabar') || lowerMessage.includes('bagaimana kabar')) {
-      return 'Saya baik-baik saja, terima kasih! Saya selalu siap membantu Anda mengetahui lebih banyak tentang kisah cinta yang indah antara Vyone dan Hubertus. Ada yang ingin Anda tanyakan tentang mereka?';
+      return 'I\'m doing great, thank you! I\'m always ready to help you learn more about the beautiful love story between Vyone and Hubertus. Is there anything you\'d like to ask about them?';
     }
     
     if (lowerMessage.includes('what can you do') || lowerMessage.includes('apa yang bisa') || lowerMessage.includes('kemampuan')) {
-      return 'Saya bisa membantu Anda dengan berbagai informasi tentang hubungan Vyone dan Hubertus! Saya bisa menceritakan tentang:\n\n• Bagaimana mereka bertemu\n• Kencan pertama mereka\n• Momen-momen spesial\n• Kepribadian mereka\n• Rencana masa depan\n• Dan masih banyak lagi!\n\nSilakan tanyakan apa saja yang ingin Anda ketahui tentang kisah cinta mereka! 💕';
+      return 'I can help you with various information about Vyone and Hubertus\'s relationship! I can tell you about:\n\n• How they met\n• Their first date\n• Special moments\n• Their personalities\n• Future plans\n• And much more!\n\nFeel free to ask anything you want to know about their love story! 💕';
     }
     
     if (lowerMessage.includes('thank') || lowerMessage.includes('terima kasih') || lowerMessage.includes('thanks')) {
-      return 'Sama-sama! Senang bisa membantu Anda mengetahui lebih banyak tentang kisah cinta Vyone dan Hubertus. Jangan ragu untuk bertanya lagi kapan saja! 😊';
+      return 'You\'re welcome! I\'m happy to help you learn more about Vyone and Hubertus\'s love story. Don\'t hesitate to ask again anytime! 😊';
     }
 
     // Specific relationship questions
@@ -227,15 +227,15 @@ export const useChat = () => {
     // Default response for relationship-related questions
     if (lowerMessage.includes('vyone') || lowerMessage.includes('hubertus') || lowerMessage.includes('mereka') || lowerMessage.includes('relationship') || lowerMessage.includes('hubungan')) {
       const responses = [
-        'Vyone dan Hubertus memiliki kisah cinta yang sangat indah! Mereka bertemu di kampus dan sekarang menjalani hubungan yang penuh kasih sayang. Ada aspek khusus dari hubungan mereka yang ingin Anda ketahui lebih lanjut?',
-        'Hubungan Vyone dan Hubertus dibangun atas dasar saling pengertian dan kasih sayang. Mereka selalu mendukung satu sama lain dalam setiap langkah. Apa yang ingin Anda ketahui tentang mereka?',
-        'Kisah cinta Vyone dan Hubertus dimulai dari pertemuan sederhana di kampus dan berkembang menjadi hubungan yang sangat indah. Mereka adalah contoh pasangan yang saling melengkapi. Ada yang spesifik yang ingin Anda tanyakan?'
+        'Vyone and Hubertus have such a beautiful love story! They met at university and are now in a loving relationship. Is there a specific aspect of their relationship you\'d like to know more about?',
+        'Vyone and Hubertus\'s relationship is built on mutual understanding and love. They always support each other in every step. What would you like to know about them?',
+        'The love story of Vyone and Hubertus started from a simple meeting at university and developed into a beautiful relationship. They are an example of a couple who complement each other. Is there something specific you\'d like to ask?'
       ];
       return responses[Math.floor(Math.random() * responses.length)];
     }
     
     // If the question doesn't match any pattern, provide a helpful response
-    return 'Saya khusus membantu menjawab pertanyaan tentang kisah cinta Vyone dan Hubertus. Anda bisa bertanya tentang bagaimana mereka bertemu, kencan pertama, momen spesial, kepribadian mereka, atau rencana masa depan mereka. Ada yang ingin Anda ketahui tentang kisah cinta mereka? 💕';
+    return 'I specialize in helping answer questions about Vyone and Hubertus\'s love story. You can ask about how they met, their first date, special moments, their personalities, or their future plans. What would you like to know about their love story? 💕';
   };
 
   return {

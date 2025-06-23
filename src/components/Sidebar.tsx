@@ -122,22 +122,22 @@ export const Sidebar: React.FC<SidebarProps> = ({
             exit={{ x: -320 }}
             className={`fixed left-0 top-0 bottom-0 w-80 z-50 ${
               theme === 'dark'
-                ? 'bg-slate-900/95 border-r border-slate-700/50'
+                ? 'bg-gray-800 border-r border-gray-700'
                 : 'bg-white/95 border-r border-gray-200/50'
             } backdrop-blur-xl flex flex-col`}
           >
             {/* Header */}
             <div className={`p-6 border-b ${
-              theme === 'dark' ? 'border-slate-700/50' : 'border-gray-200/50'
+              theme === 'dark' ? 'border-gray-700' : 'border-gray-200/50'
             } flex items-center justify-between`}>
               <div>
                 <h2 className={`font-bold text-lg ${
-                  theme === 'dark' ? 'text-slate-100' : 'text-gray-800'
+                  theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
                 }`}>
                   💕 VK Relationship Assistant
                 </h2>
                 <p className={`text-sm ${
-                  theme === 'dark' ? 'text-slate-400' : 'text-gray-600'
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
                 }`}>
                   Vyone & Hubertus
                 </p>
@@ -147,7 +147,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onClick={() => setShowSettings(!showSettings)}
                   className={`p-2 rounded-lg transition-colors ${
                     theme === 'dark'
-                      ? 'hover:bg-slate-800 text-slate-400 hover:text-slate-300'
+                      ? 'hover:bg-gray-700 text-gray-400 hover:text-gray-300'
                       : 'hover:bg-gray-100 text-gray-500 hover:text-gray-600'
                   }`}
                 >
@@ -157,7 +157,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onClick={onClose}
                   className={`p-2 rounded-lg transition-colors ${
                     theme === 'dark'
-                      ? 'hover:bg-slate-800 text-slate-400 hover:text-slate-300'
+                      ? 'hover:bg-gray-700 text-gray-400 hover:text-gray-300'
                       : 'hover:bg-gray-100 text-gray-500 hover:text-gray-600'
                   }`}
                 >
@@ -174,14 +174,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   className={`border-b overflow-hidden ${
-                    theme === 'dark' ? 'border-slate-700/50 bg-slate-800/30' : 'border-gray-200/50 bg-gray-50/30'
+                    theme === 'dark' ? 'border-gray-700 bg-gray-700/30' : 'border-gray-200/50 bg-gray-50/30'
                   }`}
                 >
                   <div className="p-4 space-y-4">
                     {/* Theme Toggle */}
                     <div className="flex items-center justify-between">
                       <span className={`text-sm font-medium ${
-                        theme === 'dark' ? 'text-slate-300' : 'text-gray-700'
+                        theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                       }`}>
                         Theme
                       </span>
@@ -192,7 +192,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         })}
                         className={`p-2 rounded-lg transition-colors ${
                           theme === 'dark'
-                            ? 'bg-slate-700 hover:bg-slate-600 text-slate-300'
+                            ? 'bg-gray-600 hover:bg-gray-500 text-gray-300'
                             : 'bg-gray-200 hover:bg-gray-300 text-gray-600'
                         }`}
                       >
@@ -203,7 +203,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     {/* Typing Speed */}
                     <div>
                       <span className={`text-sm font-medium block mb-2 ${
-                        theme === 'dark' ? 'text-slate-300' : 'text-gray-700'
+                        theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                       }`}>
                         Typing Speed
                       </span>
@@ -221,7 +221,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                                   ? 'bg-pink-600 text-white'
                                   : 'bg-purple-600 text-white'
                                 : theme === 'dark'
-                                  ? 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                  ? 'bg-gray-600 text-gray-300 hover:bg-gray-500'
                                   : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                             }`}
                           >
@@ -254,11 +254,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div className="px-4 pb-4">
               <div className={`relative rounded-lg ${
                 theme === 'dark'
-                  ? 'bg-slate-800/60 border border-slate-700/50'
+                  ? 'bg-gray-700 border border-gray-600'
                   : 'bg-white/60 border border-gray-200/50'
               }`}>
                 <Search size={18} className={`absolute left-3 top-1/2 -translate-y-1/2 ${
-                  theme === 'dark' ? 'text-slate-400' : 'text-gray-500'
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
                 }`} />
                 <input
                   type="text"
@@ -267,7 +267,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className={`w-full pl-10 pr-4 py-3 rounded-lg outline-none transition-colors ${
                     theme === 'dark'
-                      ? 'bg-transparent text-slate-100 placeholder-slate-400'
+                      ? 'bg-transparent text-gray-100 placeholder-gray-400'
                       : 'bg-transparent text-gray-800 placeholder-gray-500'
                   }`}
                 />
@@ -275,7 +275,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
 
             {/* Conversations List */}
-            <div className="flex-1 overflow-y-auto px-4 pb-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-slate-600 scrollbar-track-transparent">
+            <div className="flex-1 overflow-y-auto px-4 pb-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
               <div className="space-y-2">
                 {filteredConversations.map((conversation) => (
                   <div
@@ -286,7 +286,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           ? 'bg-pink-600/20 border border-pink-500/30'
                           : 'bg-purple-600/10 border border-purple-500/30'
                         : theme === 'dark'
-                          ? 'hover:bg-slate-800/60 border border-transparent'
+                          ? 'hover:bg-gray-700 border border-transparent'
                           : 'hover:bg-white/60 border border-transparent'
                     }`}
                   >
@@ -302,7 +302,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           onBlur={saveTitle}
                           className={`w-full p-2 rounded border ${
                             theme === 'dark'
-                              ? 'bg-slate-700 border-slate-600 text-slate-100'
+                              ? 'bg-gray-600 border-gray-500 text-gray-100'
                               : 'bg-white border-gray-300 text-gray-800'
                           }`}
                           autoFocus
@@ -317,16 +317,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           <MessageSquare size={18} className={`mt-0.5 flex-shrink-0 ${
                             conversation.id === currentConversationId
                               ? theme === 'dark' ? 'text-pink-400' : 'text-purple-600'
-                              : theme === 'dark' ? 'text-slate-400' : 'text-gray-500'
+                              : theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
                           }`} />
                           <div className="flex-1 min-w-0">
                             <div className={`font-medium truncate ${
-                              theme === 'dark' ? 'text-slate-100' : 'text-gray-800'
+                              theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
                             }`}>
                               {conversation.title}
                             </div>
                             <div className={`text-xs mt-1 ${
-                              theme === 'dark' ? 'text-slate-400' : 'text-gray-500'
+                              theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
                             }`}>
                               {format(conversation.updatedAt, 'dd/MM/yyyy HH:mm')}
                             </div>
@@ -342,7 +342,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           onClick={() => startEditTitle(conversation)}
                           className={`p-1.5 rounded transition-colors ${
                             theme === 'dark'
-                              ? 'hover:bg-slate-700 text-slate-400 hover:text-slate-300'
+                              ? 'hover:bg-gray-600 text-gray-400 hover:text-gray-300'
                               : 'hover:bg-gray-200 text-gray-500 hover:text-gray-600'
                           }`}
                           title="Edit title"
@@ -354,7 +354,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           <button
                             className={`p-1.5 rounded transition-colors ${
                               theme === 'dark'
-                                ? 'hover:bg-slate-700 text-slate-400 hover:text-slate-300'
+                                ? 'hover:bg-gray-600 text-gray-400 hover:text-gray-300'
                                 : 'hover:bg-gray-200 text-gray-500 hover:text-gray-600'
                             }`}
                             title="Export conversation"
@@ -363,28 +363,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           </button>
                           
                           <div className={`absolute right-0 top-full mt-1 py-1 rounded-lg shadow-lg opacity-0 group-hover/export:opacity-100 transition-opacity pointer-events-none group-hover/export:pointer-events-auto z-10 ${
-                            theme === 'dark' ? 'bg-slate-800 border border-slate-700' : 'bg-white border border-gray-200'
+                            theme === 'dark' ? 'bg-gray-700 border border-gray-600' : 'bg-white border border-gray-200'
                           }`}>
                             <button
                               onClick={() => handleExport(conversation, 'txt')}
-                              className={`block w-full px-3 py-1 text-left text-xs hover:bg-gray-100 dark:hover:bg-slate-700 ${
-                                theme === 'dark' ? 'text-slate-300' : 'text-gray-700'
+                              className={`block w-full px-3 py-1 text-left text-xs hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                               }`}
                             >
                               Export TXT
                             </button>
                             <button
                               onClick={() => handleExport(conversation, 'json')}
-                              className={`block w-full px-3 py-1 text-left text-xs hover:bg-gray-100 dark:hover:bg-slate-700 ${
-                                theme === 'dark' ? 'text-slate-300' : 'text-gray-700'
+                              className={`block w-full px-3 py-1 text-left text-xs hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                               }`}
                             >
                               Export JSON
                             </button>
                             <button
                               onClick={() => handleExport(conversation, 'html')}
-                              className={`block w-full px-3 py-1 text-left text-xs hover:bg-gray-100 dark:hover:bg-slate-700 ${
-                                theme === 'dark' ? 'text-slate-300' : 'text-gray-700'
+                              className={`block w-full px-3 py-1 text-left text-xs hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                               }`}
                             >
                               Export HTML
@@ -396,7 +396,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           onClick={() => onDeleteConversation(conversation.id)}
                           className={`p-1.5 rounded transition-colors ${
                             theme === 'dark'
-                              ? 'hover:bg-red-900/50 text-slate-400 hover:text-red-400'
+                              ? 'hover:bg-red-900/50 text-gray-400 hover:text-red-400'
                               : 'hover:bg-red-100 text-gray-500 hover:text-red-600'
                           }`}
                           title="Delete conversation"
@@ -410,7 +410,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                 {filteredConversations.length === 0 && (
                   <div className={`text-center py-8 ${
-                    theme === 'dark' ? 'text-slate-400' : 'text-gray-500'
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
                   }`}>
                     {searchQuery ? 'No conversations found' : 'No conversations yet'}
                   </div>

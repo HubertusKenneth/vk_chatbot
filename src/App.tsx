@@ -35,9 +35,11 @@ function App() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Hide welcome when first message is sent
+  // Show welcome when no messages or when switching to new conversation
   useEffect(() => {
-    if (messages.length > 0) {
+    if (messages.length === 0) {
+      setShowWelcome(true);
+    } else {
       setShowWelcome(false);
     }
   }, [messages]);
@@ -59,10 +61,16 @@ function App() {
     setCopiedMessage('Message copied!');
   };
 
+  const handleNewConversation = () => {
+    createNewConversation();
+    setShowWelcome(true);
+    setSidebarOpen(false);
+  };
+
   return (
     <div className={`min-h-screen transition-all duration-500 ${
       theme === 'dark'
-        ? 'bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900'
+        ? 'bg-gray-900'
         : 'bg-gradient-to-br from-rose-50 via-purple-50/30 to-pink-50'
     }`}>
       <ParticleBackground theme={theme} />
@@ -87,10 +95,7 @@ function App() {
         settings={settings}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
-        onNewConversation={() => {
-          createNewConversation();
-          setSidebarOpen(false);
-        }}
+        onNewConversation={handleNewConversation}
         onSwitchConversation={(id) => {
           switchConversation(id);
           setSidebarOpen(false);
@@ -108,7 +113,7 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           className={`backdrop-blur-xl border-b transition-all duration-300 ${
             theme === 'dark'
-              ? 'bg-slate-900/80 border-slate-700/50'
+              ? 'bg-gray-800/95 border-gray-700'
               : 'bg-white/80 border-gray-200/50'
           }`}
         >
@@ -120,7 +125,7 @@ function App() {
                   onClick={() => setSidebarOpen(true)}
                   className={`p-2 rounded-lg transition-colors ${
                     theme === 'dark'
-                      ? 'hover:bg-slate-800 text-slate-300 hover:text-slate-200'
+                      ? 'hover:bg-gray-700 text-gray-300 hover:text-gray-200'
                       : 'hover:bg-gray-100 text-gray-600 hover:text-gray-700'
                   }`}
                 >
@@ -139,12 +144,12 @@ function App() {
                 </div>
                 <div className="text-center">
                   <h1 className={`text-lg sm:text-2xl font-bold ${
-                    theme === 'dark' ? 'text-slate-100' : 'text-gray-800'
+                    theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
                   }`}>
                     VK Relationship Assistant
                   </h1>
                   <p className={`text-xs sm:text-sm ${
-                    theme === 'dark' ? 'text-slate-400' : 'text-gray-600'
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
                   }`}>
                     Storytelling Helper
                   </p>
@@ -172,7 +177,7 @@ function App() {
         <div className="flex-1 overflow-hidden">
           <div className="h-full w-full flex flex-col">
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-slate-600 scrollbar-track-transparent">
+            <div className="flex-1 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
               <div className="max-w-4xl mx-auto">
                 <AnimatePresence mode="wait">
                   {showWelcome && messages.length === 0 ? (
@@ -196,7 +201,7 @@ function App() {
                           }}
                           className={`inline-flex p-6 sm:p-8 rounded-full mb-6 sm:mb-8 ${
                             theme === 'dark'
-                              ? 'bg-gradient-to-br from-pink-500/20 to-rose-500/20 border border-pink-500/30'
+                              ? 'bg-gray-800 border border-gray-700'
                               : 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20'
                           }`}
                         >
@@ -206,25 +211,25 @@ function App() {
                         </motion.div>
                         
                         <h2 className={`text-2xl sm:text-4xl font-bold mb-4 sm:mb-6 ${
-                          theme === 'dark' ? 'text-slate-100' : 'text-gray-800'
+                          theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
                         }`}>
                           Welcome to VK Relationship Assistant!
                         </h2>
                         
                         <p className={`text-base sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4 ${
-                          theme === 'dark' ? 'text-slate-300' : 'text-gray-600'
+                          theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
                         }`}>
-                          I am a virtual assistant who is ready to help you with various questions about relationships and storytelling about V and K's relationship. 
+                          I am a virtual assistant ready to help you with various questions about relationships and storytelling about V and K's relationship. 
                           Ask anything you want to know! ✨
                         </p>
 
                         <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto mb-8 sm:mb-10 text-sm px-4 ${
-                          theme === 'dark' ? 'text-slate-400' : 'text-gray-600'
+                          theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
                         }`}>
                           <motion.div 
                             whileHover={{ scale: 1.02, y: -2 }}
                             className={`p-4 sm:p-6 rounded-xl backdrop-blur-sm ${
-                              theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
+                              theme === 'dark' ? 'bg-gray-800 border border-gray-700' : 'bg-white/40 border border-gray-200/30'
                             }`}
                           >
                             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">💕</div>
@@ -234,7 +239,7 @@ function App() {
                           <motion.div 
                             whileHover={{ scale: 1.02, y: -2 }}
                             className={`p-4 sm:p-6 rounded-xl backdrop-blur-sm ${
-                              theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
+                              theme === 'dark' ? 'bg-gray-800 border border-gray-700' : 'bg-white/40 border border-gray-200/30'
                             }`}
                           >
                             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">✨</div>
@@ -244,7 +249,7 @@ function App() {
                           <motion.div 
                             whileHover={{ scale: 1.02, y: -2 }}
                             className={`p-4 sm:p-6 rounded-xl backdrop-blur-sm sm:col-span-2 lg:col-span-1 ${
-                              theme === 'dark' ? 'bg-slate-800/40 border border-slate-700/30' : 'bg-white/40 border border-gray-200/30'
+                              theme === 'dark' ? 'bg-gray-800 border border-gray-700' : 'bg-white/40 border border-gray-200/30'
                             }`}
                           >
                             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">🔮</div>
