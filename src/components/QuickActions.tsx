@@ -20,7 +20,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onActionClick, theme
       {/* Featured Quick Actions */}
       <div>
         <h3 className={`text-lg sm:text-xl font-semibold mb-4 ${
-          theme === 'dark' ? 'text-slate-200' : 'text-gray-700'
+          theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
         }`}>
           💕 Ask About Our Love Story
         </h3>
@@ -34,7 +34,7 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onActionClick, theme
               onClick={() => onActionClick(action.message)}
               className={`p-3 sm:p-4 rounded-xl text-left transition-all duration-300 backdrop-blur-sm ${
                 theme === 'dark'
-                  ? 'bg-slate-800/60 hover:bg-slate-700/60 border border-slate-700/50 hover:border-pink-500/50 text-slate-200 shadow-lg hover:shadow-pink-500/10'
+                  ? 'bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-pink-500/50 text-gray-200 shadow-lg hover:shadow-pink-500/10'
                   : 'bg-white/60 hover:bg-white/80 border border-gray-200/50 hover:border-purple-500/50 text-gray-700 shadow-lg hover:shadow-purple-500/10'
               }`}
             >
